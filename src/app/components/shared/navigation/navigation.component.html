@@ -1,0 +1,60 @@
+<div class="dasboard-container" [class.is-mobile]="mobileQuery.matches">
+  <!-- Nav bar -->
+  <mat-toolbar color="primary" class="dashboard-toolbar">
+    <button mat-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="appName">Sistema de inventario</h1>
+    <div class="right">
+      <ul>
+        <li>
+          <button mat-button>
+            <mat-icon>help_outilne</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <mat-icon>exit_to_app</mat-icon>Cerrar sesi&oacute;n
+          </mat-menu>
+        </li>
+
+      </ul>
+    </div>
+  </mat-toolbar>
+
+  <!-- SideNav -->
+  <mat-sidenav-container
+    class="sidenav-container "
+    [style.margin-top]="mobileQuery.matches? 0 : 0">
+    <mat-sidenav #snav
+                 [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="true"
+                 [fixedTopGap]="mobileQuery.matches? 0 : 64">
+      <mat-nav-list>
+        <!-- profile -->
+        <div class="profile-card">
+          <div class="header">
+            <h2>Jorge Rivera</h2>
+            <h4>jorge.rivera&#64;ssde.com.mx</h4>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item [routerLink]="nav.route" *ngFor="let nav of menuNav">
+          <mat-icon class="icono">{{nav.icon}}</mat-icon>
+          <span class="etiqueta">{{nav.name}}</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="mobile-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <!-- Content -->
+
+</div>
