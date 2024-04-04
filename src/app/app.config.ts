@@ -6,6 +6,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {DashboardRouterChildModule} from "./components/dashboard/router-child.module";
 import {DashboardRoutingModule} from "./components/dashboard/dashboard-routing.module";
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     ),
     importProvidersFrom(DashboardRoutingModule),
     importProvidersFrom(DashboardRouterChildModule),
-    provideClientHydration(), provideAnimationsAsync()
+    provideClientHydration(), provideAnimationsAsync(),
+    provideHttpClient(withFetch())
   ]
 };
