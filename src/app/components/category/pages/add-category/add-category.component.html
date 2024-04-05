@@ -1,0 +1,24 @@
+
+<h2 mat-dialog-title>Agregar nueva categoria</h2>
+<mat-dialog-content>
+  <form>
+    <div class="category-container">
+      <mat-form-field>
+        <input matInput placeholder="Nombre" required/>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Descripcion" required></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="right">
+    <button mat-icon-button mat-dialog-close color="accent">
+      <mat-icon class="mat-18">cancel</mat-icon>
+    </button>
+    <button mat-icon-button mat-dialog-close cdkFocusInitial color="primary" [mat-dialog-close]="saveCategory()" (submit)="saveCategory()">
+      <mat-icon class="mat-18">save</mat-icon>
+    </button>
+  </div>
+</mat-dialog-actions>

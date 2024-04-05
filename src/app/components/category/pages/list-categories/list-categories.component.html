@@ -10,7 +10,7 @@
         <div class="right">
             <ul>
                 <li>
-                    <button mat-raised-button color="primary">Agregar categoria</button>
+                    <button mat-raised-button color="primary" (click)="openAddCategoryDialog()">Agregar categoria</button>
                 </li>
             </ul>
         </div>
@@ -38,10 +38,10 @@
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef>Acciones</th>
               <td mat-cell *matCellDef="let item; let i=index">
-                  <button mat-icon-button color="accent">
+                  <button mat-icon-button color="primary">
                       <mat-icon class="mat-18" aria-label="Edit">edit</mat-icon>
                   </button>
-                  <button mat-icon-button color="accent">
+                  <button mat-icon-button color="warn">
                     <mat-icon class="mat-18" aria-label="Delete">delete</mat-icon>
                   </button>
               </td>

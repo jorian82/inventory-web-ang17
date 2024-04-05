@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_PATH } from '../components/shared/constants';
-import { CategoryResponseRest } from '../models/category.model';
+import { Category, CategoryResponseRest } from '../models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,9 @@ export class CategoryService {
     //   return response.categoryResponse;//.map(item=>new Category(item.id,item.version,item.name,item.description,item.createDate,item.updateDate))
     // }));
     return this.http.get<CategoryResponseRest>(API_PATH+'/category');
+  }
+
+  public saveCategory(cat: Category) {
+    return this.http.post<CategoryResponseRest>(API_PATH+'/category',{name:cat.name, description:cat.description});
   }
 }

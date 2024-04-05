@@ -4,6 +4,8 @@ import { Category, CategoryResponseRest } from '../../../../models/category.mode
 import { CategoryService } from '../../../../services/category.service';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { AddCategoryComponent } from '../add-category/add-category.component';
 
 @Component({
   selector: 'app-list-categories',
@@ -16,13 +18,17 @@ export class ListCategoriesComponent implements OnInit, OnDestroy {
   private list: Category[] = [];
   subscriptions: Subscription[] = [];
 
-  constructor( private categoryService: CategoryService){}
+  constructor( private categoryService: CategoryService, public dialog: MatDialog){}
 
   displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
   dataSource = new MatTableDataSource<Category>();
 
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
+    this.getCategoriesList();
+  }
+
+  getCategoriesList(){
     this.list = [];
     this.subscriptions.push(
       this.categoryService.getCategories()
@@ -36,9 +42,22 @@ export class ListCategoriesComponent implements OnInit, OnDestroy {
             error: (error) => {}
           })
     );
+
   }
 
-  onAction1(){}
+  openAddCategoryDialog(){
+    const dialogRef = this.dialog.open(AddCategoryComponent, {
+      width: '50%'
+    });
+    dialogRef.afterClosed().subscribe( result => {
+      if(result) {
+        this.getCategoriesList();
+        console.log("Category saved and list updated");
+      } else {
+        console.log("Error adding the category");
+      }
+    })
+  }
 
   ngOnDestroy(): void {
     // throw new Error('Method not implemented.');
