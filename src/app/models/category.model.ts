@@ -28,5 +28,5 @@ export interface Metadata {
 }
 
 interface CategoryDTOResponse {
-  categoryDTOList: Category[];
+  categoryDtoList: Category[];
 }
