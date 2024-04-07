@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MaterialModule } from '../../../shared/material.module';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,9 @@ import { Category } from '../../../../models/category.model';
 })
 export class AddCategoryComponent {
   categorySaved: boolean = false;
-  constructor( public dialogRef: MatDialogRef<AddCategoryComponent>, private categoryService: CategoryService){}
+
+  public dialogRef = inject(MatDialogRef<AddCategoryComponent>);
+  private categoryService = inject(CategoryService);
 
   saveCategory() {
     // this.categoryService.saveCategory(new Category())

@@ -1,5 +1,5 @@
 import { MaterialModule } from './../../../shared/material.module';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Category, CategoryResponseRest } from '../../../../models/category.model';
 import { CategoryService } from '../../../../services/category.service';
 import { Subscription } from 'rxjs';
@@ -18,7 +18,8 @@ export class ListCategoriesComponent implements OnInit, OnDestroy {
   private list: Category[] = [];
   subscriptions: Subscription[] = [];
 
-  constructor( private categoryService: CategoryService, public dialog: MatDialog){}
+  private categoryService = inject(CategoryService);
+  public dialog = inject(MatDialog);
 
   displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
   dataSource = new MatTableDataSource<Category>();

@@ -14,11 +14,11 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <div class="right">
-    <button mat-icon-button mat-dialog-close color="accent">
-      <mat-icon class="mat-18">cancel</mat-icon>
+    <button mat-button mat-dialog-close color="warn">
+      <mat-icon class="mat-18">cancel</mat-icon> Cancelar
     </button>
-    <button mat-icon-button mat-dialog-close cdkFocusInitial color="primary" [mat-dialog-close]="saveCategory()" (submit)="saveCategory()">
-      <mat-icon class="mat-18">save</mat-icon>
+    <button mat-button mat-dialog-close cdkFocusInitial color="primary" (submit)="saveCategory()">
+      <mat-icon class="mat-18">save</mat-icon> Guardar
     </button>
   </div>
 </mat-dialog-actions>
